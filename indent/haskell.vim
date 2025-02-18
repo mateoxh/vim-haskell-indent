@@ -149,7 +149,7 @@ function! GetHaskellIndent() abort
     else
       return line =~# '\v<case>.*<of>\s*([[:alnum:](\"''\[]|-\d)'
             \ ? match(line, '\v<case>.*<of>\s*\zs\S')
-            \ : match(line, '\v.*<case>\s*\zs')
+            \ : match(line, '\v.*\zs<case>\s*') + shiftwidth()
     endif
   endif
 
