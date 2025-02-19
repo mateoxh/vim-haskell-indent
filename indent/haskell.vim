@@ -128,7 +128,8 @@ function! GetHaskellIndent() abort
   endif
 
   if nonblankline =~# '\v<do>\s*[[:alnum:](]'
-    return match(nonblankline, '\v<do>\s*\zs\S')
+    let lastdo = strridx(nonblankline, 'do ')
+    return match(nonblankline, '\v<do>\s*\zs', lastdo)
   endif
 
   if line =~# '\v<if>' && line !~# '\v^\s*#'
